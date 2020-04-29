@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">AD340ImperialRegistryWeek2</string>
+    <string name="AssignmentRequirement">Aguiniga, Johart 4/27/20</string>
+    <string name="imperial_citizen_registry">Imperial Citizen Registry</string>
+    <string name="please_enter_your_name">Please Enter Your Name</string>
+    <string name="please_enter_a_username">Please Enter a UserName</string>
+    <string name="please_enter_an_email">Please Enter an Email</string>
+    <string name="submit">Submit</string>
+    <string name="birthday">Birthday</string>
+    <string name="name">Name</string>
+    <string name="username">Username</string>
+    <string name="email">email</string>
+    <string name="back">BACK</string>
+    <string name="welcome_imperial_citizen_the_emperor_protects">Welcome Imperial Citizen. The Emperor Protects</string>
+    <string name="heresy_for_none_registry_await_inquisition_inquiry">NON REGISTRY IS HERESY, THE INQUISITION WATCHES</string>
+</resources>
