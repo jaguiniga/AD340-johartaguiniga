@@ -13,4 +13,18 @@
     <string name="heresy_for_none_registry_await_inquisition_inquiry">NON REGISTRY IS HERESY, THE INQUISITION WATCHES</string>
     <string name="description">Description</string>
     <string name="please_enter_your_age">Please Enter Your Age</string>
+    <string name="enter_age">Enter Age</string>
+    <string name="font_text">monospace</string>
+    <string name="porifle_tab">profile</string>
+    <string name="proifle_tab">profile_tab</string>
+    <string name="settings_tab">Settings</string>
+    <string name="matches_tab">Matches</string>
+    <string name="bar_title">Menu</string>
+    <string name="profiles_tab">Profiles</string>
+    <string name="settings_tab">Settings</string>
+    <string name="matches_tab">Matches</string>
+    <string name="app_menu">Menu</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

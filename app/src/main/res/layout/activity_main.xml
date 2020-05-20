@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,139 +8,96 @@
     android:background="@drawable/newtrek"
     tools:context=".MainActivity">
 
+
     <TextView
+        android:id="@+id/assignment_req"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/AssignmentRequirement"
         android:textAlignment="center"
-        android:textColor="#FB8C00"
-        android:textSize="16sp"
+        android:textColor="@color/color_assignment_need"
+        android:textSize="@dimen/text_assingment_"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
          />
+
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginBottom="632dp"
-        android:fontFamily="monospace"
+        android:fontFamily="@string/font_text"
         android:text="@string/dating_app"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#D81B1B"
-        android:textSize="36sp"
+        android:textColor="@color/red_text_view"
+        android:textSize="@dimen/textview_text"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/assignment_req"
+
+
+
+        />
+
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="102dp"
-        android:layout_marginTop="244dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginBottom="368dp"
-        android:autofillHints=""
         android:ems="10"
         android:hint="@string/name"
         android:inputType="textPersonName"
         android:text="@string/please_enter_your_name"
-        android:textColor="#FF1100"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:textColor="@color/enter_name_color"
+        android:layout_below="@+id/textView"
+        android:layout_centerInParent="true"
+        />
 
     <EditText
         android:id="@+id/editText3"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="384dp"
-        android:layout_marginEnd="98dp"
-        android:layout_marginBottom="20dp"
-        android:autofillHints=""
         android:ems="10"
         android:hint="@string/occupation"
         android:inputType="textPersonName"
         android:text="@string/please_enter_occupation"
-        android:textColor="#FF1100"
-        app:layout_constraintBottom_toTopOf="@+id/editText4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="@color/color_red"
+        android:layout_below="@+id/editText2"
+        android:layout_centerInParent="true" />
 
     <EditText
         android:id="@+id/editText4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="452dp"
-
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="225dp"
         android:hint="@string/description"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:text="@string/description_about"
         android:textAlignment="center"
         android:textColor="#FF0000"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_below="@+id/editText3"
+        android:layout_centerInParent="true"/>
 
     <EditText
         android:id="@+id/editText5"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="118dp"
-        android:layout_marginEnd="109dp"
-        android:layout_marginBottom="148dp"
-        android:hint="Enter Age"
+        android:hint="@string/enter_age"
         android:inputType="textPersonName"
         android:text="@string/please_enter_your_age"
-        android:textColor="#FB0000" />
+        android:layout_below="@+id/editText4"
+        android:layout_centerInParent="true"
+        android:textColor="@color/color_text_age" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="630dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="53dp"
         android:text="@string/submit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_below="@+id/editText5"
+        android:layout_centerInParent="true" />
 
 
 </RelativeLayout>

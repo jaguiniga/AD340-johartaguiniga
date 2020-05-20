@@ -1,19 +1,13 @@
 package com.example.ad340imperialregistryweek2;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import java.lang.invoke.ConstantCallSite;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_TEXT = "com.example.ad340imperialregistryweek2.EXTRA_TEXT";
@@ -38,9 +32,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        ProfileFragment m4 =  new ProfileFragment();
+
+
+
 
         // Assign Variables
-
         etName = findViewById(R.id.editText2);
         etOccupation = findViewById(R.id.editText3);
         etDescription = findViewById(R.id.editText4);
@@ -57,15 +56,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
         if (savedInstanceState != null){
+            Bundle r2 = new Bundle();
             stringName = savedInstanceState.getString("NameSav");
             stringOccupation = savedInstanceState.getString("OccupationSav");
             stringAge = savedInstanceState.getString("AgeSav");
             stringDescription = savedInstanceState.getString("DescriptionSav");
+            r2.astringName);
         }
 
     }
 
+
+
     public void openMain2Activity(){
+
             EditText Name =  findViewById(R.id.editText2);
             EditText Occupation = findViewById(R.id.editText3);
             EditText Description = findViewById(R.id.editText4);
