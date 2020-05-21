@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        ProfileFragment m4 =  new ProfileFragment();
+
 
 
 
@@ -56,12 +56,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         if (savedInstanceState != null){
-            Bundle r2 = new Bundle();
+
             stringName = savedInstanceState.getString("NameSav");
             stringOccupation = savedInstanceState.getString("OccupationSav");
             stringAge = savedInstanceState.getString("AgeSav");
             stringDescription = savedInstanceState.getString("DescriptionSav");
-            r2.astringName);
+
         }
 
     }
