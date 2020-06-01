@@ -1,52 +1,95 @@
 package com.example.ad340imperialregistryweek2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main2Activity extends AppCompatActivity {
     private Button btBack;
+    Toolbar toolbar;
+    ViewPager viewPager;
+    TabLayout tabLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        TextView textView = findViewById(R.id.textView2);
-        TextView textView2 = findViewById(R.id.textView3);
-        TextView textView3 = findViewById(R.id.textView4);
-        TextView textView4 = findViewById(R.id.textView5);
+        Intent mainIntent = getIntent();
+        Bundle bundleIntent= mainIntent.getExtras();
 
+        // Adding a tool bar
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ViewPager viewPager = (ViewPager)findViewById(R.id.viewpager);
+        setupViewPager(viewPager, bundleIntent);
 
-
-        Intent intent = getIntent();
-        String text = intent.getStringExtra(MainActivity.EXTRA_TEXT);
-        String occupation = intent.getStringExtra(MainActivity.EXTRA_OCT);
-        String description = intent.getStringExtra(MainActivity.EXTRA_DES);
-        String age = intent.getStringExtra(MainActivity.EXTRA_AGEE);
-
-        textView.setText(text);
-        textView2.setText(occupation);
-        textView3.setText(description);
-        textView4.setText(age);
-
-
-        btBack = findViewById(R.id.button);
-        btBack.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                openMainActivity();
-            }
-        });
+        // Set Tabs inside Toolbar
+        TabLayout tabs = (TabLayout) findViewById(R.id.tablayout);
+        tabs.setupWithViewPager(viewPager);
     }
 
-    public void openMainActivity(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
+
+    public void goToFirstActivity (View view){
+        finish();}
+
+    // Add Fragments to Tabs
+    private void setupViewPager(ViewPager viewPager, Bundle bundle) {
+
+        Adapter adapter = new Adapter(getSupportFragmentManager());
+        adapter.addFragment(new ProfileFragment(bundle), "Profile");
+        adapter.addFragment(new MatchingsFragment(), "Matches");
+        adapter.addFragment(new SettingsFragment(), "Settings");
+        viewPager.setAdapter(adapter);
+    }
+
+    static class Adapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public Adapter(FragmentManager manager) {
+
+            super(manager);
+        }
+
+
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+
+            return mFragmentTitleList.get(position);
+        }
     }
 }

@@ -6,4 +6,17 @@
     <dimen name="textsize_view2">30sp</dimen>
     <dimen name="textsize_view3">18sp</dimen>
     <dimen name="textsize_view5">30sp</dimen>
+    <dimen name="trial_value">30dp</dimen>
+    <item name="dateOfBirthVertical" type="dimen" format="float">0.731</item>
+
+    <dimen name="tile_padding">30sp</dimen>
+    <dimen name="card_image_height">200dp</dimen>
+    <dimen name="md_keylines">16dp</dimen>
+    <dimen name="card_title_height">40dp</dimen>
+    <dimen name="article_subheading">16sp</dimen>
+    <dimen name="recycle_padding_top">20dp</dimen>
+    <dimen name="recycling_padding_bottom">20dp</dimen>
+    <dimen name="textview2_padding">10dp</dimen>
+    <dimen name="textview3_paddingtop">26dp</dimen>
+
 </resources>

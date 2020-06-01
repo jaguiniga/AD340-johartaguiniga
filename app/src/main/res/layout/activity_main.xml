@@ -9,6 +9,7 @@
     tools:context=".MainActivity">
 
 
+
     <TextView
         android:id="@+id/assignment_req"
         android:layout_width="match_parent"
@@ -36,11 +37,7 @@
         android:textStyle="bold"
         android:layout_centerInParent="true"
         android:layout_below="@+id/assignment_req"
-
-
-
         />
-
 
     <EditText
         android:id="@+id/editText2"

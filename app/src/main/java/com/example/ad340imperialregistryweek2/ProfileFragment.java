@@ -1,5 +1,4 @@
 package com.example.ad340imperialregistryweek2;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +25,8 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         textView = v.findViewById(R.id.textView2);
@@ -45,6 +46,9 @@ public class ProfileFragment extends Fragment {
         textView4.setText(age);
 
         return v;
+
     }
+
+
 
 }

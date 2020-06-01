@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="places">
+        <item>Quark</item>
+        <item>Nyla</item>
+        <item>Work</item>
+
+
+    </string-array>
+    <string-array name="place_desc">
+        <item>Have you heard about the rules of Acquisition</item>
+        <item>My cat is a persian double coat breed.</item>
+        <item>Good day to die</item>
+    </string-array>
+    <string-array name="place_details">
+        <item>It is a 29" trek large size frame with shimano shifters
+        </item>
+        <item>5 years old and counting
+        </item>
+    </string-array>
+    <string-array name="place_locations">
+        <item>My home</item>
+        <item>My home again</item>
+    </string-array>
+    <array name="place_avator">
+        <item>@drawable/ferangi_image</item>
+        <item>@drawable/uglynyla</item>
+        <item>@drawable/worf</item>
+
+    </array>
+    <array name="places_picture">
+        <item>@drawable/ferangi_image</item>
+        <item>@drawable/uglynyla</item>
+        <item>@drawable/worf</item>
+
+    </array>
+</resources>
