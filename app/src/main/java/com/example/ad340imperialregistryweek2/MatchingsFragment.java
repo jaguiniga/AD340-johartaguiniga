@@ -71,12 +71,15 @@ public class MatchingsFragment extends Fragment {
         private final String[] mPlaces;
         private final String[] mPlaceDesc;
         private final Drawable[] mPlacePictures;
+
         public ContentAdapter(Context context) {
+           
             Resources resources = context.getResources();
             mPlaces = resources.getStringArray(R.array.places);
             mPlaceDesc = resources.getStringArray(R.array.place_desc);
             TypedArray a = resources.obtainTypedArray(R.array.places_picture);
             mPlacePictures = new Drawable[a.length()];
+
             for (int i = 0; i < mPlacePictures.length; i++) {
                 mPlacePictures[i] = a.getDrawable(i);
             }
