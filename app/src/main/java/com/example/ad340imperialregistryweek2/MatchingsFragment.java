@@ -1,9 +1,6 @@
 package com.example.ad340imperialregistryweek2;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +14,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class MatchingsFragment extends Fragment {
-
-
 
     public MatchingsFragment() {
         // Required empty public constructor
@@ -29,10 +27,7 @@ public class MatchingsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,29 +56,37 @@ public class MatchingsFragment extends Fragment {
 
             toastButton = (ImageButton) itemView.findViewById(R.id.share_button);
 
-            toastButton.setOnClickListener(v -> Toast.makeText(name.getContext(),"you like", Toast.LENGTH_SHORT) .show());
+            toastButton.setOnClickListener(v ->
+                    Toast.makeText(name.getContext(),"you like", Toast.LENGTH_SHORT) .show());
+            //todoModel.updateTodoItemById(item);
+
+
         }
     }
 
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         // Set numbers of List in RecyclerView.
         private static final int LENGTH = 3;
-        private final String[] mPlaces;
-        private final String[] mPlaceDesc;
-        private final Drawable[] mPlacePictures;
+        private TodoItem[] mPlaces;
+        private String[] mPlaceDesc;
+        private String[] mPlacePictures;
+
 
         public ContentAdapter(Context context) {
-           
-            Resources resources = context.getResources();
-            mPlaces = resources.getStringArray(R.array.places);
-            mPlaceDesc = resources.getStringArray(R.array.place_desc);
-            TypedArray a = resources.obtainTypedArray(R.array.places_picture);
-            mPlacePictures = new Drawable[a.length()];
 
-            for (int i = 0; i < mPlacePictures.length; i++) {
-                mPlacePictures[i] = a.getDrawable(i);
-            }
-            a.recycle();
+            FirebaseTodoViewModel viewModel = new FirebaseTodoViewModel();
+
+            viewModel.getTodoItems(
+                    (ArrayList<TodoItem> todoItems) ->{
+
+                        mPlaces = new TodoItem [todoItems.size()];
+                        //mPlacePictures = new String [todoItems.size()];
+                        for (int i = 0 ; i < todoItems.size(); i++){
+                            mPlaces[i] = todoItems.get(i);
+                        }
+                        notifyDataSetChanged();
+                        }
+            );
         }
 
         @Override
@@ -93,15 +96,19 @@ public class MatchingsFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.picture.setImageDrawable(mPlacePictures[position % mPlacePictures.length]);
-            holder.name.setText(mPlaces[position % mPlaces.length]);
-            holder.description.setText(mPlaceDesc[position % mPlaceDesc.length]);
+            Picasso.get().load(mPlaces[position % mPlaces.length].getImageUrl()).into(holder.picture);
+            holder.name.setText(mPlaces[position % mPlaces.length].getName());
+
+
+            //holder.description.setText(mPlaceDesc[position % mPlaceDesc.length].getUid());
         }
 
         @Override
         public int getItemCount() {
-
-            return LENGTH;
+            if (mPlaces == null){
+                return 0;
+            }
+            return mPlaces.length;
         }
     }
 }

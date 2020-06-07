@@ -2,9 +2,9 @@ package com.example.ad340imperialregistryweek2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,9 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import com.google.android.material.tabs.TabLayout;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +22,10 @@ public class Main2Activity extends AppCompatActivity {
     ViewPager viewPager;
     TabLayout tabLayout;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("MainAct2", "in main activity 2");
         setContentView(R.layout.activity_main2);
 
         Intent mainIntent = getIntent();
@@ -43,8 +41,6 @@ public class Main2Activity extends AppCompatActivity {
         TabLayout tabs = (TabLayout) findViewById(R.id.tablayout);
         tabs.setupWithViewPager(viewPager);
     }
-
-
 
     public void goToFirstActivity (View view){
         finish();}

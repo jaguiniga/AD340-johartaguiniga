@@ -7,7 +7,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,12 +25,12 @@ public class FirebaseTodoModel {
     }
 
     public void addTodoItem(TodoItem item) {
-        CollectionReference todoItemsRef = db.collection("todoItems");
+        CollectionReference todoItemsRef = db.collection("matches");
         todoItemsRef.add(item);
     }
 
     public void getTodoItems(Consumer<QuerySnapshot> dataChangedCallback, Consumer<FirebaseFirestoreException> dataErrorCallback) {
-        ListenerRegistration listener = db.collection("todoItems")
+        ListenerRegistration listener = db.collection("matches")
                 .addSnapshotListener((queryDocumentSnapshots, e) -> {
                     if (e != null) {
                         dataErrorCallback.accept(e);
@@ -43,10 +42,16 @@ public class FirebaseTodoModel {
     }
 
     public void updateTodoItemById(TodoItem item) {
-        DocumentReference todoItemRef = db.collection("todoItems").document(item.uid);
+        DocumentReference todoItemRef = db.collection("matches").document(item.getUid());
         Map<String, Object> data = new HashMap<>();
-        data.put("title", item.title);
-        data.put("done", item.done);
+        data.put("name", item.getName());
+        data.put("imageUrl", item.getImageUrl());
+        data.put("lat", item.getLat());
+        data.put("longitude", item.getLongitude());
+        data.put("uid", item.getUid());
+        data.put("liked", item.isLiked());
+
+
         todoItemRef.update(data);
     }
 

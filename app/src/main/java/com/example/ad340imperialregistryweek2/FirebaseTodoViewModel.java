@@ -1,8 +1,9 @@
 package com.example.ad340imperialregistryweek2;
 
+import android.util.Log;
+
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
@@ -10,10 +11,12 @@ public class FirebaseTodoViewModel {
     private FirebaseTodoModel todoModel;
 
     public FirebaseTodoViewModel() {
+
         todoModel = new FirebaseTodoModel();
     }
 
     public void addTodoItem(TodoItem item) {
+
         todoModel.addTodoItem(item);
     }
 
@@ -24,18 +27,21 @@ public class FirebaseTodoViewModel {
                         ArrayList<TodoItem> todoItems = new ArrayList<>();
                         for (DocumentSnapshot todoSnapshot : querySnapshot.getDocuments()) {
                             TodoItem item = todoSnapshot.toObject(TodoItem.class);
+                            Log.d("viewmodel", item.getName());
                             assert item != null;
-                            item.uid = todoSnapshot.getId();
+                            //item.uid = todoSnapshot.getUid();
                             todoItems.add(item);
                         }
                         responseCallback.accept(todoItems);
                     }
                 },
-                (databaseError -> System.out.println("Error reading Todo Items: " + databaseError))
+                (databaseError -> System.out.println("Error reading Todo " +
+                        "Items: " + databaseError))
         );
     }
 
     public void updateTodoItem(TodoItem item) {
+
         todoModel.updateTodoItemById(item);
     }
 
