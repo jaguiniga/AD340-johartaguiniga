@@ -32,16 +32,18 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_OCT = "com.example.ad340imperialregistryweek2.EXTRA_OCT";
     public static final String EXTRA_DES = "com.example.ad340imperialregistryweek2.EXTRA_DES";
     public static final String EXTRA_AGEE = "com.example.ad340imperialregistryweek2.EXTRA_AGEE";
+    public static final String EXTRA_EMAIL = "com.example.ad340imperialregistryweek2.EXTRA_EMAIL";
 
 
     // Initialize Variables
+    EditText etEmail;
     EditText etName;
     EditText etOccupation;
     EditText etDescription;
     EditText etAge;
     Button btSubmit;
 
-
+    String stringEmail;
     String stringName;
     String stringOccupation;
     String stringDescription;
@@ -88,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         // Assign Variables
+        etEmail = findViewById(R.id.email);
         etName = findViewById(R.id.editText2);
         etOccupation = findViewById(R.id.editText3);
         etDescription = findViewById(R.id.editText4);
@@ -106,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
             stringOccupation = savedInstanceState.getString("OccupationSav");
             stringAge = savedInstanceState.getString("AgeSav");
             stringDescription = savedInstanceState.getString("DescriptionSav");
+            stringEmail = savedInstanceState.getString("EmailSav");
         }
 
     }
@@ -117,11 +121,13 @@ public class MainActivity extends AppCompatActivity {
         EditText Age = findViewById(R.id.editText5);
         EditText Description = findViewById(R.id.editText4);
         EditText Occupation = findViewById(R.id.editText3);
+        EditText Email = findViewById(R.id.email);
 
         Name.setText("");
         Age.setText("");
         Description.setText("");
         Occupation.setText("");
+        Email.setText("");
 
 
     }
@@ -134,12 +140,14 @@ public class MainActivity extends AppCompatActivity {
             EditText Occupation = findViewById(R.id.editText3);
             EditText Description = findViewById(R.id.editText4);
             EditText Age = findViewById(R.id.editText5);
+            EditText Email = findViewById(R.id.email);
 
 
             String text = Name.getText().toString();
             String Oct = Occupation.getText().toString();
             String Des = Description.getText().toString();
             String Agee = Age.getText().toString();
+            String Emaill = Email.getText().toString();
 
 
             Intent intent = new Intent(this, Main2Activity.class);
@@ -147,12 +155,12 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(EXTRA_DES, Des);
                 intent.putExtra(EXTRA_AGEE, Agee);
                 intent.putExtra(EXTRA_TEXT, text);
+                intent.putExtra(EXTRA_EMAIL, Emaill);
 
         while (text.isEmpty()) {
             Name.setError("Name cannot be empty");
             return;
         }
-
 
         while ((Agee.isEmpty())) {
             Age.setError("age cannot be empty");
@@ -169,6 +177,11 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        while ((Emaill.isEmpty())) {
+            Email.setError("email cannot be empty");
+            return;
+        }
+
 
             startActivity(intent);
         }
@@ -181,10 +194,12 @@ public class MainActivity extends AppCompatActivity {
             stringOccupation = etOccupation.getText().toString();
             stringDescription = etDescription.getText().toString();
             stringAge = etAge.getText().toString();
+            stringEmail = etEmail.getText().toString();
 
             outState.putString("NameSav", String.valueOf(stringName));
             outState.putString("OccupationSav", String.valueOf(stringOccupation));
             outState.putString("DesSav", String.valueOf(stringDescription));
             outState.putString("AgeSav", String.valueOf(stringAge));
+            outState.putString("EmailSav", String.valueOf(stringEmail));
     }
     }

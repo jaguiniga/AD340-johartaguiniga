@@ -14,6 +14,7 @@ public class ProfileFragment extends Fragment {
     private TextView textView2;
     private TextView textView3;
     private TextView textView4;
+    private TextView emailView;
     private Bundle bundle;
 
 
@@ -33,22 +34,21 @@ public class ProfileFragment extends Fragment {
         textView2 = v.findViewById(R.id.textView3);
         textView3 = v.findViewById(R.id.textView4);
         textView4 = v.findViewById(R.id.textView5);
+        emailView = v.findViewById(R.id.email);
 
 
         String text = this.bundle.getString(MainActivity.EXTRA_TEXT);
         String occupation = this.bundle.getString(MainActivity.EXTRA_OCT);
         String description = this.bundle.getString(MainActivity.EXTRA_DES);
         String age = this.bundle.getString(MainActivity.EXTRA_AGEE);
+        String email = this.bundle.getString(MainActivity.EXTRA_EMAIL);
 
         textView.setText(text);
         textView2.setText(occupation);
         textView3.setText(description);
         textView4.setText(age);
+        emailView.setText(email);
 
         return v;
-
     }
-
-
-
 }

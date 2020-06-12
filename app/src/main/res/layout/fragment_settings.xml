@@ -1,14 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/assignment_req"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:text="@string/AssignmentRequirement"
+        android:textAlignment="center"
+        android:textColor="@color/color_assignment_need"
+        android:textSize="@dimen/text_assingment_"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        />
 
-</FrameLayout>
+
+
+    <TextView
+        android:id="@+id/settings_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@string/font_text"
+        android:text="@string/settings_title"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/red_text_view"
+        android:textSize="@dimen/textview_text"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/assignment_req"
+        />
+
+    <EditText
+        android:id="@+id/DailyMatchesReminderTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/please_enter_a_daily_matches_reminder_time"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColor="@color/enter_name_color"
+        android:layout_below="@+id/settings_view"
+        android:layout_centerInParent="true"
+        />
+
+    <EditText
+        android:id="@+id/max_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_the_maximum_distance_search_in_miles"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColor="@color/color_red"
+        android:layout_below="@+id/DailyMatchesReminderTime"
+        android:layout_centerInParent="true" />
+
+    <EditText
+        android:id="@+id/gender_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/please_enter_a_gender"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:layout_below="@+id/max_distance"
+        android:layout_centerInParent="true"/>
+
+    <EditText
+        android:id="@+id/PrivatePublicAccountView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_private_public_account_preference"
+        android:inputType="textPersonName"
+        android:text=""
+        android:layout_below="@+id/gender_view"
+        android:layout_centerInParent="true"
+        android:textColor="@color/color_text_age" />
+
+    <EditText
+        android:id="@+id/InterestedAgeRangeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PrivatePublicAccountView"
+        android:layout_centerInParent="true"
+        android:textColor="@color/color_text_age"
+        android:hint="@string/please_enter_a_preferred_age_range"
+        android:inputType="textPersonName"
+        android:text=""/>
+
+    <Button
+        android:id="@+id/Upbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/update_button"
+        android:layout_below="@+id/InterestedAgeRangeView"
+        android:layout_centerInParent="true"
+        android:onClick="updateDatabase"/>
+
+
+</RelativeLayout>

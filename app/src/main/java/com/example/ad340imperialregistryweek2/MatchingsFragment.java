@@ -46,19 +46,21 @@ public class MatchingsFragment extends Fragment {
         public TextView name;
         public TextView description;
         private ImageButton toastButton;
-        String myString = "You Liked this";
+
 
         public ViewHolder(LayoutInflater inflater, final ViewGroup parent) {
             super(inflater.inflate(R.layout.item_card, parent, false));
             picture = itemView.findViewById(R.id.card_image);
             name = itemView.findViewById(R.id.card_title);
             description = itemView.findViewById(R.id.card_text);
-
             toastButton = (ImageButton) itemView.findViewById(R.id.share_button);
 
             toastButton.setOnClickListener(v ->
-                    Toast.makeText(name.getContext(),"you like", Toast.LENGTH_SHORT) .show());
-            //todoModel.updateTodoItemById(item);
+                    Toast.makeText(name.getContext(),"you liked " + name.getText(), Toast.LENGTH_SHORT) .show());
+
+
+
+
 
 
         }
@@ -92,12 +94,14 @@ public class MatchingsFragment extends Fragment {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
+
         }
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
             Picasso.get().load(mPlaces[position % mPlaces.length].getImageUrl()).into(holder.picture);
             holder.name.setText(mPlaces[position % mPlaces.length].getName());
+
 
 
             //holder.description.setText(mPlaceDesc[position % mPlaceDesc.length].getUid());

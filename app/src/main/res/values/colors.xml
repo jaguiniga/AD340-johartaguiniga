@@ -13,4 +13,5 @@
     <color name="color_view5">#090909</color>
     <color name="textcolor_view4">#020202</color>
     <color name="color_black">#000000</color>
+    <color name="red">#FF0000</color>
 </resources>

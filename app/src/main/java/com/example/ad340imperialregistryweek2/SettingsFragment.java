@@ -4,48 +4,100 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.Button;
+import android.widget.TextView;
 import androidx.fragment.app.Fragment;
-
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import java.util.List;
 
 public class SettingsFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    public String email;
+    public TextView dailyMatchesReminderTime;
+    public TextView max_distance_view;
+    public TextView genderview;
+    public TextView privatePublicAccountView;
+    public TextView interestedAgeRangeView;
+    private Bundle bundle;
 
-    public SettingsFragment() {
+    Button btUpdate;
+
+    private UserViewModel userViewModel;
+
+    public SettingsFragment(Bundle bundle) {
         // Required empty public constructor
-    }
-
-
-    // TODO: Rename and change types and number of parameters
-    public static SettingsFragment newInstance(String param1, String param2) {
-        SettingsFragment fragment = new SettingsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        this.bundle = bundle;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        View v = inflater.inflate(R.layout.fragment_settings, container, false);
+        dailyMatchesReminderTime = v.findViewById(R.id.DailyMatchesReminderTime);
+        max_distance_view = v.findViewById(R.id.max_distance);
+        genderview = v.findViewById(R.id.gender_view);
+        privatePublicAccountView = v.findViewById(R.id.PrivatePublicAccountView);
+        interestedAgeRangeView = v.findViewById(R.id.InterestedAgeRangeView);
+
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+
+        // Create the observer which updates the UI.
+        final Observer<List<User>> getUsersObserver = newUsers -> {
+            if (newUsers == null || newUsers.size() <= 0) {
+                return;
+            }
+
+            User user = newUsers.get(0);
+            if (user == null) {
+                return;
+            }
+
+            dailyMatchesReminderTime.setText(user.getDailyMatchesReminderTime());
+            max_distance_view.setText(user.getMaximumDistanceSearch());
+            genderview.setText(user.getGender());
+            privatePublicAccountView.setText(user.getPrivatePublicAccount());
+            interestedAgeRangeView.setText(user.getInterestedAgeRange());
+        };
+
+        String email = this.bundle.getString(MainActivity.EXTRA_EMAIL);
+
+        String[] emails = {email};
+        userViewModel.loadAllByIds(getContext(), emails).observe(getViewLifecycleOwner(), getUsersObserver);
+
+        btUpdate = v.findViewById(R.id.Upbutton);
+        btUpdate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                updateDatabase(v);
+            }
+        });
+        return v;
     }
+    public void updateDatabase(View view) {
+        String email = this.bundle.getString(MainActivity.EXTRA_EMAIL);
+        User fakeNewUser = new User();
+
+        if(email.equals("")) {
+            email = "fakeuser@google.com";
+        }
+        fakeNewUser.setEmail(email);
+        fakeNewUser.setDailyMatchesReminderTime("dailyMatchesReminderTime");
+        fakeNewUser.setMaximumDistanceSearch("Default");
+        fakeNewUser.setGender("Nunna");
+        fakeNewUser.setPrivatePublicAccount("Nunna");
+
+        userViewModel.insertAll(getContext(), fakeNewUser);
+
+            dailyMatchesReminderTime.setText(fakeNewUser.getDailyMatchesReminderTime());
+            max_distance_view.setText(fakeNewUser.getMaximumDistanceSearch());
+            genderview.setText(fakeNewUser.getGender());
+            privatePublicAccountView.setText(fakeNewUser.getPrivatePublicAccount());
+            interestedAgeRangeView.setText(fakeNewUser.getInterestedAgeRange());
+    }
+
 }

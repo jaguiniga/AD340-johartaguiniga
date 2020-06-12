@@ -28,4 +28,18 @@
     <string name="description_text">Have you heard about the RUles of Aquisition</string>
     <string name="age_hint">Age</string>
     <string name="quark">Quark</string>
+    <string name="settings_title">Settings</string>
+    <string name="matches_time_hint">Matches Time</string>
+    <string name="max_distance_search_hint">Max Distance Search</string>
+    <string name="enter_the_maximum_distance_search_in_miles">Enter the Maximum Distance Search (in Miles)</string>
+    <string name="please_enter_a_gender">Please Enter a Gender</string>
+    <string name="gender_hint">Gender</string>
+    <string name="enter_private_public_account_preference">Enter Private/Public Account Preference</string>
+    <string name="interested_age_range_hint">Interested Age Range</string>
+    <string name="please_enter_a_preferred_age_range">Please Enter a Preferred Age Range</string>
+    <string name="please_enter_a_daily_matches_reminder_time">Please Enter a Daily Matches Reminder Time</string>
+    <string name="update_button">UPDATE</string>
+    <string name="johartaguiniag_gmail_com">johartaguiniag@gmail.com</string>
+    <string name="email_hint">email</string>
+    <string name="please_enter_your_email">Please Enter Your Email</string>
 </resources>
