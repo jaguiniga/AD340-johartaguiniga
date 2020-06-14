@@ -11,9 +11,9 @@ import java.util.List;
 
 public class UserViewModel extends ViewModel {
 
-    public LiveData<List<User>> loadAllByIds(Context context, String[] emailIds) {
+    public LiveData<List<User>> loadAllByIds(Context context, String[] email) {
         AppDatabase db = AppDatabaseSingleton.getDatabase(context);
-        return db.userDao().loadAllByIds(emailIds);
+        return db.userDao().loadAllByIds(email);
     }
 
     public void updateUsers(Context context, User... users) {

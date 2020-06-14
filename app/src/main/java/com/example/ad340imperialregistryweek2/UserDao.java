@@ -15,8 +15,8 @@ import java.util.List;
 public interface UserDao {
 
 
-    @Query("SELECT * FROM user WHERE email IN (:emails)")
-    LiveData<List<User>> loadAllByIds(String[] emails);
+    @Query("SELECT * FROM user WHERE email IN (:email)")
+    LiveData<List<User>> loadAllByIds(String[] email);
 
     @Update
     void updateUsers(User... users);
