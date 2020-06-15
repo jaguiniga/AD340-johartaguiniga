@@ -50,6 +50,7 @@ public class MatchingsFragment extends Fragment {
         public TextView name;
         public TextView description;
         private ImageButton toastButton;
+        public String likeString = "you liked ";
 
         public ViewHolder(LayoutInflater inflater, final ViewGroup parent) {
             super(inflater.inflate(R.layout.item_card, parent, false));
@@ -59,7 +60,10 @@ public class MatchingsFragment extends Fragment {
             toastButton = (ImageButton) itemView.findViewById(R.id.share_button);
 
             toastButton.setOnClickListener(v ->
-                    Toast.makeText(name.getContext(),"you liked " + name.getText(), Toast.LENGTH_SHORT) .show());
+                    Toast.makeText(name.getContext(),likeString + name.getText(), Toast.LENGTH_SHORT) .show());
+            //TodoItem todoToUpdate = todoItems.get(position);
+           // todoToUpdate.setLiked(!todoToUpdate.isLiked());
+            //viewModel.updateTodoItem(todoToUpdate);
         }
     }
 

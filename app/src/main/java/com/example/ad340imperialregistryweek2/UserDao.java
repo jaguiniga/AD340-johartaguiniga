@@ -14,9 +14,8 @@ import java.util.List;
 @Dao
 public interface UserDao {
 
-
-    @Query("SELECT * FROM user WHERE email IN (:email)")
-    LiveData<List<User>> loadAllByIds(String[] email);
+    @Query("SELECT * FROM user WHERE email IN (:emails)")
+    LiveData<List<User>> loadAllByIds(String[] emails);
 
     @Update
     void updateUsers(User... users);
@@ -26,6 +25,4 @@ public interface UserDao {
 
     @Delete
     void delete(User user);
-
-
 }

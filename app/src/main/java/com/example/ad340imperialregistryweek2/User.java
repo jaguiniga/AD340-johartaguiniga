@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 public class User {
     @PrimaryKey
     @NonNull
-    private String email;
+    private String email ="";
 
     @ColumnInfo(name = "daily_matches_reminder_time")
     private String dailyMatchesReminderTime;
@@ -28,12 +28,11 @@ public class User {
     private String PrivatePublicAccount;
 
     @NonNull
-
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(@NonNull String email) {
+    public void setEmail(@NonNull String emailID) {
         this.email = email;
     }
 

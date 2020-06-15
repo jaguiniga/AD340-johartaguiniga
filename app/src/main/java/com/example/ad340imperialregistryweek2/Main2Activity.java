@@ -31,14 +31,13 @@ public class Main2Activity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main2);
 
-        Intent mainIntent = getIntent();
-        Bundle bundleIntent= mainIntent.getExtras();
+
 
         // Adding a tool bar
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ViewPager viewPager = (ViewPager)findViewById(R.id.viewpager);
-        setupViewPager(viewPager, bundleIntent);
+        setupViewPager(viewPager);
 
         // Set Tabs inside Toolbar
         TabLayout tabs = (TabLayout) findViewById(R.id.tablayout);
@@ -49,12 +48,15 @@ public class Main2Activity extends AppCompatActivity {
         finish();}
 
     // Add Fragments to Tabs
-    private void setupViewPager(ViewPager viewPager, Bundle bundle) {
+    private void setupViewPager(ViewPager viewPager) {
+
+        Intent mainIntent = getIntent();
+        Bundle bundleIntent= mainIntent.getExtras();
 
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new ProfileFragment(bundle), "Profile");
+        adapter.addFragment(new ProfileFragment(bundleIntent), "Profile");
         adapter.addFragment(new MatchingsFragment(), "Matches");
-        adapter.addFragment(new SettingsFragment(bundle), "Settings");
+        adapter.addFragment(new SettingsFragment(bundleIntent), "Settings");
         viewPager.setAdapter(adapter);
     }
 
